@@ -1,56 +1,10 @@
-import React from 'react';
-
-const Header = (props) => {
-  return (
-    <header>
-      <h1>{ props.title }</h1>
-      <span className="stats">Players: {props.totalPlayers}</span> 
-    </header>
-  );
-}
-
-class Counter extends React.Component {
-  state = { 
-    score: 0 
-  };
+// React import written like this is used when working with class components
+import React, {Component} from 'react'; //this is called main-import
+import Header from './Header';
+import Player from './Player';
   
-  incrementScore = () => {
-    this.setState( prevState => ({
-      score: prevState.score + 1
-    }));
-  }
-
-  decrementScore = () => {
-    this.setState( prevState => ({
-      score: prevState.score - 1
-    }));
-  }
-
-  render() {
-    return (
-      <div className="counter">
-        <button className="counter-action decrement" onClick={this.decrementScore}> - </button>
-        <span className="counter-score">{ this.state.score }</span>
-        <button className="counter-action increment" onClick={this.incrementScore}> + </button>
-      </div>
-    );
-  }
-}
-  
-const Player = (props) => {
-  return (
-    <div className="player">
-      <span className="player-name">
-        <button className="remove-player" onClick={() => props.removePlayer(props.id)}>✖</button>
-        { props.name }
-      </span>
-
-      <Counter />
-    </div>
-  );
-}
-
-class App extends React.Component {
+//using a main-import means the class can be written without React.Component 
+class App extends Component {
   state = {
     players: [
       {
