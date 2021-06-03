@@ -8,24 +8,29 @@ class App extends Component {
   state = {
     players: [
       {
-        name: "Guil",
+        name: "Laura",
         score: 0,
         id: 1
       },
       {
-        name: "Treasure",
+        name: "Aida",
         score: 0,
         id: 2
       },
       {
-        name: "Ashley",
+        name: "Jelena",
         score: 0,
         id: 3
       },
       {
-        name: "James",
+        name: "Kyndal",
         score: 0,
         id: 4
+      },
+      {
+        name: "Kristi",
+        score: 0,
+        id: 5
       }
     ]
   };
@@ -48,6 +53,7 @@ handleScoreChange = (index, delta) => {
       players: updatedPlayers
     };
   });
+  console.log('index: ' + index, 'delta: ' + delta)
 }
 
   handleRemovePlayer = (id) => {
@@ -63,7 +69,7 @@ handleScoreChange = (index, delta) => {
       <div className="scoreboard">
         <Header 
           title="Scoreboard" 
-          totalPlayers={this.state.players.length} 
+          players={this.state.players}
         />
   
         {/* Players list */}
