@@ -2,6 +2,7 @@
 import React, {Component} from 'react'; //this is called main-import
 import Header from './Header';
 import Player from './Player';
+import AddPlayerForm from './AddPlayerForm';
   
 //using a main-import means the class can be written without React.Component 
 class App extends Component {
@@ -84,6 +85,7 @@ handleScoreChange = (index, delta) => {
             removePlayer={this.handleRemovePlayer}           
           />
         )}
+        <AddPlayerForm />
       </div>
     );
   }
