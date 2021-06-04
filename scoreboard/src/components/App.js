@@ -27,15 +27,12 @@ class App extends Component {
         name: "Kyndal",
         score: 0,
         id: 4
-      },
-      {
-        name: "Kristi",
-        score: 0,
-        id: 5
       }
     ]
   };
-  
+  //player id counter(creating a unique id for the player submitted in the form)
+  prevPlayerId = 4;
+
 //changes the player score by accepting the index of the player 
 handleScoreChange = (index, delta) => {
   this.setState( prevState => {
@@ -54,9 +51,22 @@ handleScoreChange = (index, delta) => {
       players: updatedPlayers
     };
   });
-  console.log('index: ' + index, 'delta: ' + delta)
 }
 
+//function to add player from the form submission
+handleAddPlayer = (name) => {
+  this.setState({
+    players: [
+      //spread operator that brings in a copy of all the existing player array 
+      ...this.state.players,
+      {
+        name,
+        score: 0,
+        id: this.prevPlayerId += 1
+      }
+    ]
+  });
+}
   handleRemovePlayer = (id) => {
     this.setState( prevState => {
       return {
@@ -85,7 +95,7 @@ handleScoreChange = (index, delta) => {
             removePlayer={this.handleRemovePlayer}           
           />
         )}
-        <AddPlayerForm />
+        <AddPlayerForm addPlayer={this.handleAddPlayer} />
       </div>
     );
   }

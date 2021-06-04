@@ -10,11 +10,17 @@ class AddPlayerForm extends Component {
     handleValueChange = (e) => {
         this.setState({ value: e.target.value});
     }
+
+    //event handler for submitting name 
+    handleSubmit = (e) => {
+        e.prevent.default(); //with out this the app state can be lost 
+        //call the function that's going to be passed using props.
+        this.props.addPlayer(this.state.value);
+    }
     //render the form element
     render() {
-        console.log(this.state.value);
         return (
-            <form>
+            <form onSubmit={this.handleSubmit}>
             {/* set inputs value property 
             to state to ensure the content 
             in the text field is always in 
@@ -32,6 +38,7 @@ class AddPlayerForm extends Component {
                 />
             </form>
         );
+        
     }
 }
 
