@@ -11,9 +11,9 @@ class AddPlayerForm extends Component {
   }
 
   handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); //with out this the app state can be lost 
     this.props.addPlayer(this.state.value); //call the function that's going to be passed using props.
-    this.setState({ value: '' });
+    this.setState({ value: '' }); 
   }
 
   render() {

@@ -55,18 +55,20 @@ class App extends Component {
       };
     });
   }
-
+//updates players state based on previous state
   handleAddPlayer = (name) => {
-    console.log(...this.state.players);
-    this.setState({
-      players: [
-        ...this.state.players,
-        {
-          name,
-          score: 0,
-          id: this.prevPlayerId += 1
-        }
-      ]
+    this.setState(prevState => {
+      return {
+          players: [
+          ...prevState.players,
+          {
+            name,
+            score: 0,
+            id: this.prevPlayerId += 1
+          }
+        ]
+      }
+
     });
   }
 
