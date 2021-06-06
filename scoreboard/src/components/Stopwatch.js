@@ -15,6 +15,10 @@ class Stopwatch extends Component {
             this.setState({previousTime: Date.now() })
         }
     }
+//function to reset the elapsedTime back to 0
+    handleReset = () => {
+        this.setState({ elapsedTime: 0 });
+    }
 
     componentDidMount() {
         this.intervalID = setInterval(() => this.tick(), 100)
@@ -31,16 +35,15 @@ class Stopwatch extends Component {
     }
 
     render() {
+        const seconds = Math.floor(this.state.elapsedTime/1000);
         return (
             <div className="stopwatch">
                 <h2>Stopwatch</h2>
-                <span className="stopwatch-time">
-                    {Math.floor(this.state.elapsedTime/1000)}
-                </span>
+                <span className="stopwatch-time">{seconds}</span>
                 <button onClick={this.handleStopWatch}>
                     { this.state.isRunning ? 'stop' : 'start' }
                 </button>
-                <button>Reset</button>
+                <button onClick={this.handleReset}>Reset</button>
             </div>
         );
     }
