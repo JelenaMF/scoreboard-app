@@ -11,7 +11,6 @@ class Player extends PureComponent {
       index, 
       changeScore
     } = this.props;
-  console.log(name + ' rendered ')
     return (
       <div className="player">
         <span className="player-name">
