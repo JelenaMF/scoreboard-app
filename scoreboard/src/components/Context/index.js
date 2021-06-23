@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React from 'react';
 
 //set up provider and consumer using createContext giving an object with consumer and provider properties that are also objects 
 const ScoreboardContext = React.createContext(); 
